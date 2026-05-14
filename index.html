@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="page_title">E|Q&gt;CE — Association Mathématiques & Quantique | ECE Lyon</title>
+    <meta name="description"
+        content="E|Q>CE est l'association Mathématiques et Quantique de l'ECE Lyon. Apprendre. Expérimenter. Intriquer."
+        data-i18n-attr="content" data-i18n="meta_description">
+    <link rel="icon" type="image/jpeg" href="Logo EQCE JPEG - Q.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav id="main-nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo" id="nav-logo">
+                <span class="nav-logo-text">E|Q&gt;CE</span>
+            </a>
+            <div class="nav-links" id="nav-links">
+                <a href="#about" class="nav-link" data-i18n="nav_about">À propos</a>
+                <a href="#qubit" class="nav-link" data-i18n="nav_experience">Expérience</a>
+                <a href="#bureau" class="nav-link" data-i18n="nav_bureau">Bureau</a>
+                <a href="#poles" class="nav-link" data-i18n="nav_poles">Pôles</a>
+                <a href="#membres" class="nav-link">Membres</a>
+                <a href="#contact" class="nav-link" data-i18n="nav_contact">Contact</a>
+            </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="hero">
+        <canvas id="quantum-canvas"></canvas>
+        <div class="hero-content">
+            <div class="hero-logo-wrapper">
+                <img src="Logo EQCE.svg" alt="Logo E|Q>CE" class="hero-logo" id="hero-logo">
+            </div>
+            <p class="hero-subtitle" id="hero-subtitle" data-i18n="hero_subtitle">Association Mathématiques & Quantique
+                — ECE Lyon</p>
+            <p class="hero-slogan" id="hero-slogan">
+                <span class="slogan-word" style="--delay: 0" data-i18n="slogan_1">Apprendre.</span>
+                <span class="slogan-word" style="--delay: 1" data-i18n="slogan_2">Expérimenter.</span>
+                <span class="slogan-word" style="--delay: 2" data-i18n="slogan_3">Intriquer.</span>
+            </p>
+            <div class="hero-scroll-indicator" id="scroll-indicator">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M10 4L10 16M10 16L4 10M10 16L16 10" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-i18n="about_tag">01 — À propos</span>
+                <h2 class="section-title" data-i18n="about_title">Qui sommes-nous</h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p class="about-lead" data-i18n="about_lead" data-i18n-html="true">
+                        <strong>E|Q&gt;CE</strong> est l'association dédiée aux <strong>mathématiques</strong> et à
+                        l'<strong>informatique quantique</strong> de l'ECE Lyon.
+                    </p>
+                    <p data-i18n="about_text" data-i18n-html="true">
+                        Notre mission est de démocratiser ces disciplines fascinantes au sein de notre école, en
+                        proposant des formations accessibles, des ateliers pratiques et des événements stimulants. Que
+                        vous soyez curieux débutant ou passionné confirmé, E|Q&gt;CE vous offre un cadre pour explorer
+                        ces domaines.
+                    </p>
+
+                </div>
+                <div class="about-stats">
+                    <div class="stat-card" id="stat-1">
+                        <span class="stat-number">2</span>
+                        <span class="stat-label" data-i18n="stat_1_label">Domaines d'expertise</span>
+                        <span class="stat-detail" data-i18n="stat_1_detail">Mathématiques & Quantique</span>
+                    </div>
+                    <div class="stat-card" id="stat-2">
+                        <span class="stat-number">4</span>
+                        <span class="stat-label" data-i18n="stat_2_label">Pôles actifs</span>
+                        <span class="stat-detail" data-i18n="stat_2_detail">Formation (Quantique & Mathématiques),
+                            Événements,
+                            Communication</span>
+                    </div>
+                    <div class="stat-card" id="stat-3">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label" data-i18n="stat_3_label">Membres du bureau</span>
+                        <span class="stat-detail" data-i18n="stat_3_detail">Président, Vice-président (Quantique &
+                            Mathématiques), Trésorier,
+                            Secrétaire</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Qubit Interactive Section -->
+    <section id="qubit" class="section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag section-tag-light" data-i18n="qubit_tag">02 — Expérience quantique</span>
+                <h2 class="section-title section-title-light" data-i18n="qubit_title">Mesurez un qubit</h2>
+            </div>
+            <div class="qubit-section-layout">
+                <div class="qubit-explanation">
+                    <p data-i18n="qubit_text_1" data-i18n-html="true">En mécanique quantique, un <strong>qubit</strong>
+                        peut exister dans une superposition des états
+                        |0⟩ et |1⟩ simultanément. Ce n'est qu'au moment de la <strong>mesure</strong> que le qubit «
+                        choisit » un état définitif.</p>
+                    <p data-i18n="qubit_text_2">Survolez le qubit ci-contre pour effectuer une mesure et observer
+                        l'effondrement de la fonction
+                        d'onde.</p>
+                    <div class="qubit-formula">
+                        |ψ⟩ = α|0⟩ + β|1⟩
+                    </div>
+                </div>
+                <div class="qubit-interactive-wrapper">
+                    <div class="qubit-container" id="qubit-container">
+                        <div class="qubit-sphere" id="qubit-sphere">
+                            <div class="qubit-state-display" id="qubit-state-display">
+                                <div class="qubit-superposition" id="qubit-superposition">
+                                    <div class="prob-row">
+                                        <span class="ket">|0⟩</span>
+                                        <div class="prob-bar-track">
+                                            <div class="prob-bar prob-bar-0" id="prob-bar-0"></div>
+                                        </div>
+                                        <span class="prob-value" id="prob-0">70%</span>
+                                    </div>
+                                    <div class="prob-row">
+                                        <span class="ket">|1⟩</span>
+                                        <div class="prob-bar-track">
+                                            <div class="prob-bar prob-bar-1" id="prob-bar-1"></div>
+                                        </div>
+                                        <span class="prob-value" id="prob-1">30%</span>
+                                    </div>
+                                </div>
+                                <div class="qubit-measured" id="qubit-measured">
+                                    <span class="measured-ket" id="measured-ket"></span>
+                                </div>
+                            </div>
+                            <div class="qubit-label" data-i18n="qubit_label">Survolez pour mesurer</div>
+                            <div class="qubit-ring qubit-ring-1"></div>
+                            <div class="qubit-ring qubit-ring-2"></div>
+                            <div class="qubit-ring qubit-ring-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bureau Section -->
+    <section id="bureau" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-i18n="bureau_tag">03 — Bureau</span>
+                <h2 class="section-title" data-i18n="bureau_title">Notre équipe</h2>
+            </div>
+            <div class="bureau-grid">
+                <div class="bureau-card bureau-card-president" id="card-president">
+                    <div class="bureau-card-inner">
+                        <div class="bureau-img-wrapper">
+                            <img src="Bureau/President.png" alt="Président" class="bureau-img">
+                        </div>
+                        <span class="bureau-role" data-i18n="role_president">Président</span>
+                        <span class="bureau-name">Sacha Kefif</span>
+                    </div>
+                </div>
+                <div class="bureau-card" id="card-vp-quantique">
+                    <div class="bureau-card-inner">
+                        <div class="bureau-img-wrapper">
+                            <img src="Bureau/VP_Quantique.png" alt="VP Quantique" class="bureau-img">
+                        </div>
+                        <span class="bureau-role" data-i18n="role_vp_quantum">Vice-Président Quantique</span>
+                        <span class="bureau-name">Tao Dous</span>
+                    </div>
+                </div>
+                <div class="bureau-card" id="card-vp-maths">
+                    <div class="bureau-card-inner">
+                        <div class="bureau-img-wrapper">
+                            <img src="Bureau/VP_Maths.png" alt="VP Maths" class="bureau-img">
+                        </div>
+                        <span class="bureau-role" data-i18n="role_vp_maths">Vice-Président Mathématiques</span>
+                        <span class="bureau-name">Pierre Hilaireau</span>
+                    </div>
+                </div>
+                <div class="bureau-card" id="card-tresorier">
+                    <div class="bureau-card-inner">
+                        <div class="bureau-img-wrapper">
+                            <img src="Bureau/Tresorier.png" alt="Trésorier" class="bureau-img">
+                        </div>
+                        <span class="bureau-role" data-i18n="role_treasurer">Trésorier</span>
+                        <span class="bureau-name">Jeremy Gonnet</span>
+                    </div>
+                </div>
+                <div class="bureau-card" id="card-secretaire">
+                    <div class="bureau-card-inner">
+                        <div class="bureau-img-wrapper">
+                            <img src="Bureau/Sacha Vucetic.jpeg" alt="Secrétaire" class="bureau-img">
+                        </div>
+                        <span class="bureau-role" data-i18n="role_secretary">Secrétaire</span>
+                        <span class="bureau-name">Sacha Vucetic</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pôles Section -->
+    <section id="poles" class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-i18n="poles_tag">04 — Pôles</span>
+                <h2 class="section-title" data-i18n="poles_title">Nos activités</h2>
+            </div>
+            <div class="poles-grid">
+                <div class="pole-card" id="pole-quantum">
+                    <div class="pole-card-arrow">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </div>
+                    <div class="pole-img-wrapper"><img src="Poles/Maxime Brucale.png" alt="Formation Quantique"
+                            class="pole-img"></div>
+                    <div class="pole-content">
+                        <div class="pole-number">01</div>
+                        <h3 class="pole-title" data-i18n="pole_quantum_title">Formation Quantique</h3>
+                        <p class="pole-desc" data-i18n="pole_quantum_desc">Initiez-vous à l'informatique quantique :
+                            qubits,
+                            portes logiques, algorithmes
+                            de Grover et Shor, et programmation sur simulateurs quantiques.</p>
+                        <div class="pole-status">
+                            <span class="pole-badge">Responsable : Maxime Brucale</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="pole-card" id="pole-maths">
+                    <div class="pole-card-arrow">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </div>
+                    <div class="pole-img-wrapper"><img src="Poles/Gregoire Roche.jpeg" alt="Formation Mathématiques"
+                            class="pole-img"></div>
+                    <div class="pole-content">
+                        <div class="pole-number">02</div>
+                        <h3 class="pole-title" data-i18n="pole_maths_title">Formation Mathématiques</h3>
+                        <p class="pole-desc" data-i18n="pole_maths_desc">Explorez les fondements mathématiques : algèbre
+                            linéaire, théorie des groupes,
+                            topologie et leurs applications à la physique moderne.</p>
+                        <div class="pole-status">
+                            <span class="pole-badge">Responsable : Grégoire Roche</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="pole-card" id="pole-events">
+                    <div class="pole-card-arrow">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </div>
+                    <div class="pole-img-wrapper"><img src="Poles/PoleEvents.png" alt="Événements" class="pole-img">
+                    </div>
+                    <div class="pole-content">
+                        <div class="pole-number">03</div>
+                        <h3 class="pole-title" data-i18n="pole_events_title">Événements</h3>
+                        <p class="pole-desc" data-i18n="pole_events_desc">Conférences, hackathons quantiques, visites de
+                            laboratoires et rencontres avec
+                            des chercheurs et professionnels du domaine.</p>
+                        <div class="pole-status">
+                            <span class="pole-badge" data-i18n="pole_badge">Responsable à venir</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="pole-card" id="pole-com">
+                    <div class="pole-card-arrow">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </div>
+                    <div class="pole-img-wrapper"><img src="Poles/PoleCom.png" alt="Communication" class="pole-img">
+                    </div>
+                    <div class="pole-content">
+                        <div class="pole-number">04</div>
+                        <h3 class="pole-title" data-i18n="pole_com_title">Communication</h3>
+                        <p class="pole-desc" data-i18n="pole_com_desc">Vulgarisation scientifique, gestion des réseaux
+                            sociaux, création de contenu et
+                            rayonnement de l'association au sein de l'école.</p>
+                        <div class="pole-status">
+                            <span class="pole-badge">Responsable : Hanna Bendouda</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membres Section -->
+    <section id="membres" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">05 — L'équipe élargie</span>
+                <h2 class="section-title" id="membres-title">Membres</h2>
+            </div>
+            <div class="membres-grid" id="membres-grid">
+                <div class="membre-card"><span class="membre-name">Maxime Chabert</span></div>
+                <div class="membre-card"><span class="membre-name">Raslen Ayadi</span></div>
+                <div class="membre-card"><span class="membre-name">Hanna Bendouda</span></div>
+                <div class="membre-card"><span class="membre-name">Maxime Brucale</span></div>
+                <div class="membre-card"><span class="membre-name">Tao Dous</span></div>
+                <div class="membre-card"><span class="membre-name">Jérémy Gonnet</span></div>
+                <div class="membre-card"><span class="membre-name">Maxime Grosshans</span></div>
+                <div class="membre-card"><span class="membre-name">Pierre Hilaireau</span></div>
+                <div class="membre-card"><span class="membre-name">Sacha Kefif</span></div>
+                <div class="membre-card"><span class="membre-name">Salmata Ongoïba</span></div>
+                <div class="membre-card"><span class="membre-name">Grégoire Roche</span></div>
+                <div class="membre-card"><span class="membre-name">Clément Rodrigues-Letouze</span></div>
+                <div class="membre-card"><span class="membre-name">Haythem Slama</span></div>
+                <div class="membre-card"><span class="membre-name">Sacha Vucetic</span></div>
+            </div>
+
+            <div class="section-header" style="margin-top: 80px;">
+                <h2 class="section-title" id="membres-honneur-title">Membres d'honneur</h2>
+            </div>
+            <div class="membres-honneur-grid" id="membres-honneur-grid">
+                <div class="membre-card">
+                    <div class="membre-img-wrapper">
+                        <img src="Membres d'honneur/BIANCHI.jpg" alt="Céline Bianchi" class="membre-img">
+                    </div>
+                    <span class="membre-role">Professeur à l'ECE</span>
+                    <span class="membre-name">Céline Bianchi</span>
+                </div>
+                <div class="membre-card">
+                    <div class="membre-img-wrapper">
+                        <img src="Membres d'honneur/BONFILS.jpg" alt="Anne Bonfils" class="membre-img">
+                    </div>
+                    <span class="membre-role">Professeur à l'ECE</span>
+                    <span class="membre-name">Anne Bonfils</span>
+                </div>
+                <div class="membre-card">
+                    <div class="membre-img-wrapper">
+                        <img src="Membres d'honneur/SOUBRA H.png" alt="Hassan Soubra" class="membre-img">
+                    </div>
+                    <span class="membre-role">Professeur à l'ECE</span>
+                    <span class="membre-name">Hassan Soubra</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <img src="Logo EQCE.svg" alt="E|Q>CE" class="footer-logo">
+                    <span class="footer-name">E|Q&gt;CE</span>
+                    <p class="footer-tagline" data-i18n="footer_tagline">Apprendre. Expérimenter. Intriquer.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4 data-i18n="footer_nav">Navigation</h4>
+                        <a href="#about" data-i18n="nav_about">À propos</a>
+                        <a href="#qubit" data-i18n="nav_experience">Expérience</a>
+                        <a href="#bureau" data-i18n="nav_bureau">Bureau</a>
+                        <a href="#poles" data-i18n="nav_poles">Pôles</a>
+                        <a href="#membres">Membres</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Contact</h4>
+                        <a href="mailto:eqce.association@gmail.com">eqce.association@gmail.com</a>
+                        <a href="https://www.instagram.com/eqce.association/" target="_blank"
+                            rel="noopener">Instagram</a>
+                        <a href="https://www.linkedin.com/company/eqce" target="_blank" rel="noopener">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="footer_copyright">&copy; 2026 E|Q&gt;CE — ECE Lyon. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Pôles -->
+    <div class="modal-overlay" id="pole-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close" aria-label="Fermer">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="modal-body">
+                <div class="modal-header">
+                    <span class="modal-tag" id="modal-tag">01</span>
+                    <h3 class="modal-title" id="modal-title">Titre</h3>
+                </div>
+                <div class="modal-text" id="modal-text">
+                    <!-- Text injected by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Language Switcher -->
+    <div class="lang-switcher" id="lang-switcher">
+        <div class="lang-ribbon" id="lang-ribbon">
+            <button class="lang-option active" data-lang="fr" id="lang-btn-fr">FR</button>
+            <button class="lang-option" data-lang="en" id="lang-btn-en">EN</button>
+        </div>
+        <button class="lang-toggle" id="lang-toggle">FR</button>
+    </div>
+
+    <script src="script.js?v=2"></script>
+</body>
+
+</html>
