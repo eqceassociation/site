@@ -26,12 +26,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (navToggle) {
         navToggle.addEventListener('click', () => {
             navLinks.classList.toggle('open');
+            navToggle.classList.toggle('open');
         });
 
         // Close menu on link click
         navLinks.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('open');
+                navToggle.classList.remove('open');
             });
         });
     }

@@ -1,10 +1,6 @@
 {
-  "framework": null,
-  "redirects": [
-    {
-      "source": "/",
-      "destination": "/web/",
-      "permanent": false
-    }
+  "name": "eqce-association",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/web/$1" }
   ]
 }
