@@ -46,6 +46,7 @@ html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
 }
 
 body {
@@ -506,6 +507,8 @@ img {
 
 .qubit-ring {
     position: absolute;
+    top: 50%;
+    left: 50%;
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 50%;
     animation: qubitPulse 4s ease-in-out infinite;
@@ -534,12 +537,12 @@ img {
     0%,
     100% {
         opacity: 0.3;
-        transform: scale(1);
+        transform: translate(-50%, -50%) scale(1);
     }
 
     50% {
         opacity: 1;
-        transform: scale(1.04);
+        transform: translate(-50%, -50%) scale(1.04);
     }
 }
 
@@ -909,7 +912,7 @@ img {
 
 .membres-honneur-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     gap: 20px;
 }
 
@@ -1090,7 +1093,7 @@ img {
         --section-pad: 80px;
     }
 
-    .container {
+    .container, .nav-inner {
         padding: 0 24px;
     }
 
@@ -1103,7 +1106,7 @@ img {
         background: rgba(255, 255, 255, 0.98);
         backdrop-filter: blur(20px);
         flex-direction: column;
-        padding: 24px 40px;
+        padding: 24px;
         gap: 20px;
         border-bottom: 1px solid var(--light-gray);
     }
@@ -1126,6 +1129,10 @@ img {
         gap: 48px;
     }
 
+    .qubit-container {
+        transform: scale(0.85);
+    }
+
     .bureau-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -1137,6 +1144,7 @@ img {
     .pole-card,
     .pole-card:nth-child(even) {
         flex-direction: column;
+        max-height: none;
     }
 
     .pole-img-wrapper {
@@ -1162,8 +1170,17 @@ img {
 }
 
 @media (max-width: 480px) {
+    .container, .nav-inner {
+        padding: 0 20px;
+    }
+
     .bureau-grid {
         grid-template-columns: 1fr;
+    }
+
+    .membres-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 12px;
     }
 
     .hero-slogan {
@@ -1171,8 +1188,16 @@ img {
         gap: 8px;
     }
 
-    .nav-inner {
-        padding: 0 20px;
+    .qubit-container {
+        transform: scale(0.7);
+    }
+
+    .pole-content {
+        padding: 24px;
+    }
+
+    .pole-img-wrapper {
+        height: 220px;
     }
 }
 

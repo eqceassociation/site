@@ -1,3 +1,10 @@
 {
-  "name": "eqce-association"
+  "framework": null,
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/web/",
+      "permanent": false
+    }
+  ]
 }
