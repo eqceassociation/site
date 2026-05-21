@@ -1106,6 +1106,14 @@ img {
     .bureau-grid {
         grid-template-columns: repeat(3, 1fr);
     }
+
+    .pole-card {
+        max-height: none;
+    }
+
+    .pole-img-wrapper {
+        flex: 0 0 32%;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1158,7 +1166,8 @@ img {
     }
 
     .poles-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
     }
 
     .pole-card,
@@ -1167,7 +1176,15 @@ img {
     }
 
     .pole-img-wrapper {
-        height: 280px;
+        display: none;
+    }
+
+    .pole-content {
+        padding: 28px 24px 32px;
+    }
+
+    .pole-desc {
+        display: none;
     }
 
     .pole-content {
@@ -1189,8 +1206,41 @@ img {
 }
 
 @media (max-width: 480px) {
+    .membres-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .membres-honneur-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .membre-card:not(:has(.membre-img-wrapper)) {
+        padding: 12px;
+    }
+
+    .membres-honneur-grid .membre-img-wrapper {
+        height: 110px;
+    }
+
+    .membres-honneur-grid .membre-role {
+        font-size: 0.6rem;
+        line-height: 1.2;
+        max-width: 100%;
+        text-align: center;
+        white-space: normal;
+    }
+
+    .membre-name {
+        font-size: 0.9rem;
+    }
+
     .bureau-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .poles-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .hero-slogan {
