@@ -6,7 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Navigation scroll effect ---
     const nav = document.getElementById('main-nav');
-    const hero = document.getElementById('hero');
+    const heroLogo = document.getElementById('hero-logo');
+    const navLogo = document.getElementById('nav-logo');
 
     const handleNavScroll = () => {
         if (window.scrollY > 60) {
@@ -18,6 +19,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', handleNavScroll, { passive: true });
     handleNavScroll();
+
+    if (heroLogo && navLogo) {
+        const logoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLogo.classList.remove('logo-visible');
+                } else {
+                    navLogo.classList.add('logo-visible');
+                }
+            });
+        }, {
+            threshold: 0.2
+        });
+
+        logoObserver.observe(heroLogo);
+    }
 
     // --- Mobile nav toggle ---
     const navToggle = document.getElementById('nav-toggle');
@@ -243,7 +260,14 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            const href = this.getAttribute('href');
+
+            if (href === '#') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                return;
+            }
+
+            const target = document.querySelector(href);
             if (target) {
                 target.scrollIntoView({
                     behavior: 'smooth',
