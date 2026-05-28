@@ -4,6 +4,11 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    const trackEvent = (eventName, params = {}) => {
+        if (typeof window.gtag !== 'function') return;
+        window.gtag('event', eventName, params);
+    };
+
     // --- Navigation scroll effect ---
     const nav = document.getElementById('main-nav');
     const heroLogo = document.getElementById('hero-logo');
@@ -141,6 +146,11 @@ document.addEventListener('DOMContentLoaded', () => {
             qubitSphere.style.borderColor = 'rgba(255,255,255,0.6)';
             qubitSphere.style.background = 'rgba(255,255,255,0.08)';
             qubitSphere.classList.remove('measuring');
+
+            trackEvent('qubit_measure', {
+                measured_state: result,
+                interaction_type: 'hover_or_click'
+            });
         }, 150);
     }
 
@@ -546,6 +556,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
             const lang = btn.getAttribute('data-lang');
+            const previousLang = currentLang;
 
             // Update active state
             langOptions.forEach(b => b.classList.remove('active'));
@@ -554,8 +565,29 @@ document.addEventListener('DOMContentLoaded', () => {
             // Apply language
             applyLanguage(lang);
 
+            if (lang !== previousLang) {
+                trackEvent('language_switch', { language: lang });
+            }
+
             // Close ribbon
             langSwitcher.classList.remove('open');
+        });
+    });
+
+    // --- Social link tracking ---
+    const socialLinks = [
+        { selector: 'a[href*="instagram.com/eqce.association"]', platform: 'instagram' },
+        { selector: 'a[href*="linkedin.com/company/eqce"]', platform: 'linkedin' }
+    ];
+
+    socialLinks.forEach(({ selector, platform }) => {
+        document.querySelectorAll(selector).forEach(link => {
+            link.addEventListener('click', () => {
+                trackEvent('social_click', {
+                    platform,
+                    location: 'footer'
+                });
+            });
         });
     });
 
