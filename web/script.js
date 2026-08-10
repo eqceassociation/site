@@ -405,6 +405,12 @@ document.addEventListener('DOMContentLoaded', () => {
             pole_com_desc: 'Science communication, social media management, content creation, and promoting the association within the school.',
             pole_badge: 'Head TBD',
 
+            // Members
+            members_tag: '05 — Extended team',
+            members_label: 'Members',
+            honorary_members_label: 'Honorary Members',
+            honorary_member_role: 'Professor at ECE',
+
             // Footer
             footer_nav: 'Navigation',
             footer_tagline: 'Learn. Experiment. Entangle.',
@@ -478,6 +484,12 @@ document.addEventListener('DOMContentLoaded', () => {
             pole_com_desc: 'Vulgarisation scientifique, gestion des réseaux sociaux, création de contenu et rayonnement de l\'association au sein de l\'école.',
             pole_badge: 'Responsable à venir',
 
+            // Membres
+            members_tag: '05 — L\'équipe élargie',
+            members_label: 'Membres',
+            honorary_members_label: 'Membres d\'honneur',
+            honorary_member_role: 'Professeur à l\'ECE',
+
             // Footer
             footer_nav: 'Navigation',
             footer_tagline: 'Apprendre. Expérimenter. Intriquer.',
@@ -500,6 +512,25 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     let currentLang = 'fr';
+
+    function updateMemberCounts(lang) {
+        const dict = translations[lang];
+        if (!dict) return;
+
+        const membresGrid = document.getElementById('membres-grid');
+        const membresTitle = document.getElementById('membres-title');
+        if (membresGrid && membresTitle) {
+            const count = membresGrid.querySelectorAll('.membre-card').length;
+            membresTitle.textContent = `${count} ${dict.members_label}`;
+        }
+
+        const honoraryGrid = document.getElementById('membres-honneur-grid');
+        const honoraryTitle = document.getElementById('membres-honneur-title');
+        if (honoraryGrid && honoraryTitle) {
+            const count = honoraryGrid.querySelectorAll('.membre-card').length;
+            honoraryTitle.textContent = `${count} ${dict.honorary_members_label}`;
+        }
+    }
 
     function applyLanguage(lang) {
         currentLang = lang;
@@ -536,6 +567,8 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             qubitLabel.textContent = dict['qubit_measured'];
         }
+
+        updateMemberCounts(lang);
 
         // Update the main toggle button text
         langToggle.textContent = lang.toUpperCase();
@@ -599,18 +632,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Dynamic Members Count ---
-    const membresGrid = document.getElementById("membres-grid");
-    const membresTitle = document.getElementById("membres-title");
-    if (membresGrid && membresTitle) {
-        const count = membresGrid.querySelectorAll(".membre-card").length;
-        membresTitle.textContent = `${count} Membres`;
-    }
-
-    const membresHonneurGrid = document.getElementById("membres-honneur-grid");
-    const membresHonneurTitle = document.getElementById("membres-honneur-title");
-    if (membresHonneurGrid && membresHonneurTitle) {
-        const count = membresHonneurGrid.querySelectorAll(".membre-card").length;
-        membresHonneurTitle.textContent = `${count} Membres d'honneur`;
-    }
+    updateMemberCounts(currentLang);
 
 });
