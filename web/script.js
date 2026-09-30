@@ -142,9 +142,9 @@ document.addEventListener('DOMContentLoaded', () => {
             measuredKet.textContent = `|${result}⟩`;
             qubitLabel.textContent = (typeof currentLang !== 'undefined' && translations && translations[currentLang]) ? translations[currentLang]['qubit_measured'] : 'Mesuré !';
 
-            // Add pulse effect to sphere
-            qubitSphere.style.borderColor = 'rgba(255,255,255,0.6)';
-            qubitSphere.style.background = 'rgba(255,255,255,0.08)';
+            // Ring takes the color of the measured state (see .qubit-sphere.measured)
+            qubitSphere.dataset.state = result;
+            qubitSphere.classList.add('measured');
             qubitSphere.classList.remove('measuring');
 
             trackEvent('qubit_measure', {
@@ -167,8 +167,8 @@ document.addEventListener('DOMContentLoaded', () => {
         qubitMeasured.classList.remove('visible');
         qubitLabel.textContent = (typeof currentLang !== 'undefined' && translations && translations[currentLang]) ? translations[currentLang]['qubit_label'] : 'Survolez pour mesurer';
 
-        qubitSphere.style.borderColor = '';
-        qubitSphere.style.background = '';
+        qubitSphere.classList.remove('measured');
+        delete qubitSphere.dataset.state;
 
         startFluctuation();
     }
@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Particle system — subtle dots and connections
+    // Particle system — subtle dots and connections (ink color of the poster)
     const particles = [];
     const PARTICLE_COUNT = window.innerWidth <= 768 ? 30 : 150;
     const CONNECTION_DIST = 150;
@@ -225,7 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
         draw() {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = '#000';
+            ctx.fillStyle = '#181818';
             ctx.fill();
         }
     }
@@ -248,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     ctx.beginPath();
                     ctx.moveTo(particles[i].x, particles[i].y);
                     ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.strokeStyle = `rgba(0, 0, 0, ${1 - dist / CONNECTION_DIST})`;
+                    ctx.strokeStyle = `rgba(24, 24, 24, ${1 - dist / CONNECTION_DIST})`;
                     ctx.lineWidth = 0.5;
                     ctx.stroke();
                 }
@@ -298,7 +298,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const poleDetails = {
         'pole-quantum': "Notre pôle de formation quantique propose un cursus complet allant des concepts de base aux algorithmes avancés. Nous couvrons la notation de Dirac, l'intrication, les portes logiques quantiques et la programmation pratique sur des simulateurs. Des séances pratiques régulières sont organisées pour vous permettre de manipuler de vrais qubits en cloud.",
         'pole-maths': "Le pôle mathématiques s'attache à construire les fondations théoriques indispensables à la compréhension de la mécanique quantique. Au programme : espaces de Hilbert, algèbre linéaire avancée, probabilités quantiques et théorie des groupes. Ces sessions sont pensées pour être accessibles tout en conservant la rigueur mathématique nécessaire.",
-        'pole-events': "Le pôle événementiel est le cœur battant de l'association. Il organise notre participation à des conférences avec des experts du domaine, à des hackathons et des visites de laboratoires de recherche. Nous participons également à des événements nationaux pour représenter l'ECE Lyon et tisser des liens avec l'écosystème quantique français.",
+        'pole-events': "Le pôle événementiel est le cœur battant de l'association. Il organise notre participation à des conférences avec des experts du domaine, à des hackathons et des visites de laboratoires de recherche. Nous participons également à des événements nationaux pour représenter l'ECE Paris & Lyon et tisser des liens avec l'écosystème quantique français.",
         'pole-com': "Le pôle communication vulgarise les concepts complexes pour les rendre accessibles à tous. Il gère nos réseaux sociaux, publie des articles, crée des infographies et assure le rayonnement de nos événements. C'est le pôle idéal pour ceux qui aiment croiser la science, le design et le journalisme scientifique."
     };
 
@@ -315,6 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const detailKey = poleDetailKeys ? poleDetailKeys[cardId] : null;
             const detail = (dict && detailKey && dict[detailKey]) ? dict[detailKey] : (poleDetails[cardId] || "Plus d'informations à venir.");
             modalText.innerHTML = `<p>${detail}</p>`;
+            modalOverlay.style.setProperty('--pole-color', getComputedStyle(card).getPropertyValue('--pole-color'));
 
             modalOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -345,8 +346,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const translations = {
         en: {
             // Page meta
-            page_title: 'E|Q>CE — Mathematics & Quantum Association | ECE Lyon',
-            meta_description: 'E|Q>CE is the Mathematics and Quantum association of ECE Lyon. Learn. Experiment. Entangle.',
+            page_title: 'E|Q>CE — Mathematics & Quantum Computing Association | ECE Paris & Lyon',
+            meta_description: 'E|Q>CE is the Mathematics and Quantum Computing association of ECE Paris & Lyon. Learn. Experiment. Entangle.',
 
             // Navigation
             nav_about: 'About',
@@ -356,7 +357,9 @@ document.addEventListener('DOMContentLoaded', () => {
             nav_contact: 'Contact',
 
             // Hero
-            hero_subtitle: 'Mathematics & Quantum Association — ECE Lyon',
+            hero_title_1: 'Mathematics',
+            hero_title_2: '& Quantum Computing',
+            hero_title_3: 'Association',
             slogan_1: 'Learn.',
             slogan_2: 'Experiment.',
             slogan_3: 'Entangle.',
@@ -364,7 +367,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // About
             about_tag: '01 — About',
             about_title: 'Who we are',
-            about_lead: '<strong>E|Q&gt;CE</strong> is the association dedicated to <strong>mathematics</strong> and <strong>quantum computing</strong> at ECE Lyon.',
+            about_lead: '<strong>E|Q&gt;CE</strong> is the association dedicated to <strong>mathematics</strong> and <strong>quantum computing</strong> at ECE Paris &amp; Lyon.',
             about_text: 'Our mission is to make these fascinating disciplines accessible within our school, by offering beginner-friendly courses, hands-on workshops, and stimulating events. Whether you are a curious beginner or an experienced enthusiast, E|Q&gt;CE provides a framework for exploring these fields.',
 
             // Stats
@@ -414,18 +417,18 @@ document.addEventListener('DOMContentLoaded', () => {
             // Footer
             footer_nav: 'Navigation',
             footer_tagline: 'Learn. Experiment. Entangle.',
-            footer_copyright: '© 2026 E|Q>CE — ECE Lyon. All rights reserved.',
+            footer_copyright: '© 2026 E|Q>CE — ECE Paris & Lyon. All rights reserved.',
 
             // Modal pole details
             pole_detail_quantum: 'Our quantum training division offers a comprehensive curriculum ranging from basic concepts to advanced algorithms. We cover Dirac notation, entanglement, quantum logic gates, and hands-on programming on simulators. Regular practical sessions are organized to let you manipulate real cloud-based qubits.',
             pole_detail_maths: 'The mathematics division builds the essential theoretical foundations for understanding quantum mechanics. Topics include: Hilbert spaces, advanced linear algebra, quantum probabilities, and group theory. These sessions are designed to be accessible while maintaining the necessary mathematical rigor.',
-            pole_detail_events: 'The events division is the beating heart of the association. It organizes conferences with domain experts, research lab visits, and our annual quantum hackathon. We also participate in national events to represent ECE Lyon and build connections within the French quantum ecosystem.',
+            pole_detail_events: 'The events division is the beating heart of the association. It organizes conferences with domain experts, research lab visits, and our annual quantum hackathon. We also participate in national events to represent ECE Paris & Lyon and build connections within the French quantum ecosystem.',
             pole_detail_com: 'The communication division simplifies complex concepts to make them accessible to everyone. It manages our social media, writes articles, creates infographics, and ensures the visibility of our events. It\'s the ideal division for those who enjoy blending science, design, and science journalism.',
         },
         fr: {
             // Page meta
-            page_title: 'E|Q>CE — Association Mathématiques & Quantique | ECE Lyon',
-            meta_description: 'E|Q>CE est l\'association Mathématiques et Quantique de l\'ECE Lyon. Apprendre. Expérimenter. Intriquer.',
+            page_title: 'E|Q>CE — Association Mathématiques & Informatique Quantique | ECE Paris & Lyon',
+            meta_description: 'E|Q>CE est l\'association Mathématiques et Informatique Quantique de l\'ECE Paris & Lyon. Apprendre. Expérimenter. Intriquer.',
 
             // Navigation
             nav_about: 'À propos',
@@ -435,7 +438,9 @@ document.addEventListener('DOMContentLoaded', () => {
             nav_contact: 'Contact',
 
             // Hero
-            hero_subtitle: 'Association Mathématiques & Quantique — ECE Lyon',
+            hero_title_1: 'Association',
+            hero_title_2: 'Mathématiques',
+            hero_title_3: '& Informatique Quantique',
             slogan_1: 'Apprendre.',
             slogan_2: 'Expérimenter.',
             slogan_3: 'Intriquer.',
@@ -443,7 +448,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // About
             about_tag: '01 — À propos',
             about_title: 'Qui sommes-nous',
-            about_lead: '<strong>E|Q&gt;CE</strong> est l\'association dédiée aux <strong>mathématiques</strong> et à l\'<strong>informatique quantique</strong> de l\'ECE Lyon.',
+            about_lead: '<strong>E|Q&gt;CE</strong> est l\'association dédiée aux <strong>mathématiques</strong> et à l\'<strong>informatique quantique</strong> de l\'ECE Paris &amp; Lyon.',
             about_text: 'Notre mission est de démocratiser ces disciplines fascinantes au sein de notre école, en proposant des formations accessibles, des ateliers pratiques et des événements stimulants. Que vous soyez curieux débutant ou passionné confirmé, E|Q&gt;CE vous offre un cadre pour explorer ces domaines.',
 
             // Stats
@@ -493,12 +498,12 @@ document.addEventListener('DOMContentLoaded', () => {
             // Footer
             footer_nav: 'Navigation',
             footer_tagline: 'Apprendre. Expérimenter. Intriquer.',
-            footer_copyright: '© 2026 E|Q>CE — ECE Lyon. Tous droits réservés.',
+            footer_copyright: '© 2026 E|Q>CE — ECE Paris & Lyon. Tous droits réservés.',
 
             // Modal pole details
             pole_detail_quantum: "Notre pôle de formation quantique propose un cursus complet allant des concepts de base aux algorithmes avancés. Nous couvrons la notation de Dirac, l'intrication, les portes logiques quantiques et la programmation pratique sur des simulateurs. Des séances pratiques régulières sont organisées pour vous permettre de manipuler de vrais qubits en cloud.",
             pole_detail_maths: "Le pôle mathématiques s'attache à construire les fondations théoriques indispensables à la compréhension de la mécanique quantique. Au programme : espaces de Hilbert, algèbre linéaire avancée, probabilités quantiques et théorie des groupes. Ces sessions sont pensées pour être accessibles tout en conservant la rigueur mathématique nécessaire.",
-            pole_detail_events: "Le pôle événementiel est le cœur battant de l'association. Il organise des conférences avec des experts du domaine, des visites de laboratoires de recherche et notre hackathon quantique annuel. Nous participons également à des événements nationaux pour représenter l'ECE Lyon et tisser des liens avec l'écosystème quantique français.",
+            pole_detail_events: "Le pôle événementiel est le cœur battant de l'association. Il organise des conférences avec des experts du domaine, des visites de laboratoires de recherche et notre hackathon quantique annuel. Nous participons également à des événements nationaux pour représenter l'ECE Paris & Lyon et tisser des liens avec l'écosystème quantique français.",
             pole_detail_com: "Le pôle communication vulgarise les concepts complexes pour les rendre accessibles à tous. Il gère nos réseaux sociaux, rédige des articles, crée des infographies et assure le rayonnement de nos événements. C'est le pôle idéal pour ceux qui aiment croiser la science, le design et le journalisme scientifique.",
         }
     };
