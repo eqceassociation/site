@@ -4,17 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="page_title">E|Q&gt;CE — Association Mathématiques & Quantique | ECE Paris & Lyon</title>
+    <title data-i18n="page_title">E|Q&gt;CE — Association Mathématiques & Informatique Quantique | ECE Paris & Lyon</title>
     <meta name="description"
-        content="E|Q>CE est l'association Mathématiques et Quantique de l'ECE Paris & Lyon. Apprendre. Expérimenter. Intriquer."
+        content="E|Q>CE est l'association Mathématiques et Informatique Quantique de l'ECE Paris & Lyon. Apprendre. Expérimenter. Intriquer."
         data-i18n-attr="content" data-i18n="meta_description">
+    <meta name="theme-color" content="#EBE7DC">
     <link rel="icon" type="image/jpeg" href="Logos/Logo EQCE JPEG - Q.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@300;400;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="web/style.css">
+    <link rel="stylesheet" href="web/style.css?v=3">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3JC8SXE4LS"></script>
     <script>
@@ -52,24 +53,36 @@
 
     <!-- Hero Section -->
     <header id="hero">
-        <canvas id="quantum-canvas"></canvas>
-        <div class="hero-content">
-            <div class="hero-logo-wrapper">
-                <img src="Logos/Logo EQCE.svg" alt="Logo E|Q>CE" class="hero-logo" id="hero-logo">
+        <canvas id="quantum-canvas" aria-hidden="true"></canvas>
+        <div class="container hero-inner">
+            <div class="hero-top">
+                <div class="hero-mark">
+                    <span class="hero-mark-text">ECE Paris &amp; Lyon</span>
+                </div>
+                <div class="hero-mark hero-mark-logo hero-logo-wrapper">
+                    <div class="hero-logo-crop">
+                        <img src="Logos/Logo EQCE.svg" alt="Logo E|Q>CE" class="hero-logo" id="hero-logo">
+                    </div>
+                </div>
             </div>
-            <p class="hero-subtitle" id="hero-subtitle" data-i18n="hero_subtitle">Association Mathématiques & Quantique
-                - ECE Paris & Lyon</p>
+            <h1 class="hero-title">
+                <span class="visually-hidden">E|Q&gt;CE — </span>
+                <span class="hero-title-line" data-i18n="hero_title_1">Association</span>
+                <span class="hero-title-line" data-i18n="hero_title_2">Mathématiques</span>
+                <span class="hero-title-line hero-title-light" data-i18n="hero_title_3">&amp;&nbsp;Informatique Quantique</span>
+            </h1>
             <p class="hero-slogan" id="hero-slogan">
                 <span class="slogan-word" style="--delay: 0" data-i18n="slogan_1">Apprendre.</span>
                 <span class="slogan-word" style="--delay: 1" data-i18n="slogan_2">Expérimenter.</span>
                 <span class="slogan-word" style="--delay: 2" data-i18n="slogan_3">Intriquer.</span>
             </p>
-            <div class="hero-scroll-indicator" id="scroll-indicator">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <path d="M10 4L10 16M10 16L4 10M10 16L16 10" stroke="currentColor" stroke-width="1.5"
-                        stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-            </div>
+            <div class="hero-wordmark" aria-hidden="true">EQCE</div>
+        </div>
+        <div class="hero-scroll-indicator" id="scroll-indicator">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 4L10 16M10 16L4 10M10 16L16 10" stroke="currentColor" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
         </div>
     </header>
 
@@ -407,6 +420,9 @@
                 <p data-i18n="footer_copyright">&copy; 2026 E|Q&gt;CE - ECE Paris & Lyon. Tous droits réservés.</p>
             </div>
         </div>
+        <div class="color-bars" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+        </div>
     </footer>
 
     <!-- Modal Pôles -->
@@ -440,7 +456,7 @@
         <button class="lang-toggle" id="lang-toggle">FR</button>
     </div>
 
-    <script src="web/script.js?v=2"></script>
+    <script src="web/script.js?v=3"></script>
 </body>
 
 </html>
